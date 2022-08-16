@@ -1,7 +1,7 @@
 import { createShip } from './Ship.js'
 
 function createGameboard() {
-    let board = new Array(100)
+    let board = new Array(100).fill(null)
     let vertical = true
     let ships = []
     let shots = {
@@ -41,7 +41,7 @@ function createGameboard() {
 
     function receiveHit(spot) {
         if ((gameboard.shots.hits.includes(spot)) || (gameboard.shots.misses.includes(spot))) return false
-        if (gameboard.board[spot] !== undefined) {
+        if (gameboard.board[spot] !== null) {
             gameboard.shots.hits.push(spot)
             gameboard.board[spot].hit(spot)
         } else {
