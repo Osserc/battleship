@@ -1,12 +1,11 @@
-import { Ship } from '../Ship'
+import { createShip } from '../Ship'
 
 let ship
+beforeEach(() => {
+    ship = createShip(5, [0, 10, 20, 30, 40])
+})
 
 describe('test hit detection', () => {
-    beforeEach(() => {
-        ship = Ship('Pippo', 5, [0, 10, 20, 30, 40])
-    })
-
     test('shoot to hit', () => {
         expect(ship.hit(10)).toBe(true)
     })
@@ -25,12 +24,7 @@ describe('test hit detection', () => {
 })
 
 describe('test sunk status detection', () => {
-    beforeEach(() => {
-        ship = Ship('Pippo', 5, [0, 10, 20, 30, 40])
-    })
-
     test('not sunk', () => {
-        ship = Ship('Pippo', 5, [0, 10, 20, 30, 40])
         ship.hit(10)
         expect(ship.isSunk()).toBe(false)
     })

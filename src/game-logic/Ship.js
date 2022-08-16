@@ -1,4 +1,4 @@
-function Ship(player, length, coordinates) {
+function createShip(length, coordinates) {
     let hits = []
 
     function hit(shot) {
@@ -11,17 +11,18 @@ function Ship(player, length, coordinates) {
     }
 
     function isSunk() {
+        // deprecated logic
         // if (coordinates.every((spot) => hits.includes(spot))) return true
         if (hits.length === length) return true
         return false
     }
 
     return {
+        coordinates,
         hit,
-        hits,
         isSunk
     }
 
 }
 
-export { Ship }
+export { createShip }
