@@ -38,14 +38,3 @@ describe('test sunk status detection', () => {
         expect(ship.isSunk()).toBe(true)
     })
 })
-
-// added only to check whether hits array is updated or not
-
-// describe('check hits array', () => {
-//     test('successful shot', () => {
-//         expect(ship.hits.includes(10)).toBe(true)
-//     })
-//     test('failed shot', () => {
-//         expect(ship.hits.includes(2)).toBe(false)
-//     })
-// })

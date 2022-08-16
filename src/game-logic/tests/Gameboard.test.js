@@ -52,3 +52,68 @@ describe('test ship placement', () => {
         expect(gameboard.ships).toHaveLength(2)
     })
 })
+
+describe('inspect board state', () => {
+    beforeEach(() => {
+        gameboard = createGameboard()
+    })
+
+    test('check number of ships on board', () => {
+        gameboard.placeShip(2, 4)
+        gameboard.placeShip(3, 54)
+        expect(gameboard.ships).toHaveLength(2)
+    })
+
+    test('all ships are sunk', () => {
+        gameboard.ships = [createShip(3, [4, 14, 24]), createShip(2, [35, 36]), createShip(5, [93, 94, 95, 96, 97])]
+        gameboard.ships[0].hit(4)
+        gameboard.ships[0].hit(24)
+        gameboard.ships[0].hit(14)
+        gameboard.ships[1].hit(35)
+        gameboard.ships[1].hit(36)
+        gameboard.ships[2].hit(97)
+        gameboard.ships[2].hit(94)
+        gameboard.ships[2].hit(95)
+        gameboard.ships[2].hit(93)
+        gameboard.ships[2].hit(96)
+        expect(gameboard.allSunk()).toBe(true)
+    })
+
+    test('not all ships are sunk', () => {
+        gameboard.ships = [createShip(3, [4, 14, 24]), createShip(2, [35, 36]), createShip(5, [93, 94, 95, 96, 97])]
+        gameboard.ships[0].hit(4)
+        gameboard.ships[0].hit(24)
+        gameboard.ships[0].hit(14)
+        gameboard.ships[1].hit(35)
+        gameboard.ships[1].hit(36)
+        gameboard.ships[2].hit(97)
+        gameboard.ships[2].hit(96)
+        expect(gameboard.allSunk()).toBe(false)
+    })
+})
+
+describe('test hit functionality', () => {
+    beforeEach(() => {
+        gameboard = createGameboard()
+        gameboard.placeShip(3, 4)
+        gameboard.changeOrientation()
+        gameboard.placeShip(2, 35)
+        gameboard.placeShip(5, 93)
+    })
+
+    test('record missed hit', () => {
+        gameboard.receiveHit(65)
+        expect(gameboard.shots.misses).toContain(65)
+    })
+
+    test('record successful hit', () => {
+        gameboard.receiveHit(4)
+        console.log(gameboard.board[4])
+        expect(gameboard.shots.hits).toContain(4)
+    })
+
+    test('deny already hit spot', () => {
+        gameboard.receiveHit(65)
+        expect(gameboard.receiveHit(65)).toBe(false)
+    })
+})

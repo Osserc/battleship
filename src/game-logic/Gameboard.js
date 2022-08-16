@@ -39,6 +39,21 @@ function createGameboard() {
         return coordinates
     }
 
+    function receiveHit(spot) {
+        if ((gameboard.shots.hits.includes(spot)) || (gameboard.shots.misses.includes(spot))) return false
+        if (gameboard.board[spot] !== undefined) {
+            gameboard.shots.hits.push(spot)
+            gameboard.board[spot].hit(spot)
+        } else {
+            gameboard.shots.misses.push(spot)
+        }
+    }
+
+    function allSunk() {
+        if (gameboard.ships.every((ship) => ship.isSunk())) return true
+        return false
+    }
+
     const gameboard = {
         board,
         vertical,
@@ -46,7 +61,9 @@ function createGameboard() {
         shots,
         changeOrientation,
         // calculateCoordinates,
-        placeShip
+        placeShip,
+        receiveHit,
+        allSunk
     }
 
     return gameboard
