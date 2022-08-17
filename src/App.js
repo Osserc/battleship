@@ -6,24 +6,39 @@ import { ComputerBoard } from './components/ComputerBoard.js'
 import { Game } from './game-logic/Game.js'
 
 function App() {
-  const [game, setGame] = useState(Game.placement)
+  const [gameState, setGameState] = useState(Game.gameState)
+
   useEffect(() => {
-    console.log(game)
-  }, [game])
+    if (gameState.turn % 2 === 1) {
+      console.log('CPU turn! Pew pew!')
+      advanceTurn()
+    }
+  }, [gameState.turn])
 
   function finishPlacement() {
-    setGame(!game)
+    setGameState({
+                    ...gameState,
+                    placement: !gameState.placement
+                  })
+  }
+
+  function advanceTurn() {
+    setGameState({
+                    ...gameState,
+                    turn: gameState.turn + 1
+                  })
   }
 
   return (
     <div className="App">
-      { game === true ? 
+      { gameState.placement === true ? 
         <div className="flex justify-center align-center gap-15">
-          <PlacementBoard generatedBoard={Game.boardOne} p={finishPlacement} />
+          <PlacementBoard generatedBoard={Game.boardOne} finishPlacement={finishPlacement} />
         </div>
         :
         <div className="flex justify-center align-center gap-15">
-          <PlayerBoard generatedBoard={Game.boardOne} />
+          <PlayerBoard generatedBoard={Game.boardOne} advanceTurn={advanceTurn} />
+          {gameState.turn}
           <ComputerBoard generatedBoard={Game.boardTwo} />
         </div>
       }

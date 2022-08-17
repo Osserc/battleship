@@ -8,7 +8,7 @@ function PlacementBoard(props) {
 
     useEffect(() => {
         if (ships.length === 0) {
-            props.p()
+            props.finishPlacement()
             // Game.finishPlacement()
             // console.log('Hi')
             // console.log(Game.placement)
