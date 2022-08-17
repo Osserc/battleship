@@ -1,7 +1,9 @@
-import { useState } from "react"
+import { useState } from 'react'
+import { Game } from '../game-logic/Game.js'
 
-function Board(props) {
+function PlayerBoard(props) {
     const [gameboard, setgameboard] = useState(props.generatedBoard)
+    const [turn, setTurn] = useState(0)
 
     return (
         <div className="board container">
@@ -12,4 +14,4 @@ function Board(props) {
     )
 }
 
-export { Board }
+export { PlayerBoard }
