@@ -1,9 +1,7 @@
 import { useState } from 'react'
-import { Game } from '../game-logic/Game.js'
 
 function ComputerBoard(props) {
-    const [gameboard, setgameboard] = useState(props.generatedBoard)
-    const [turn, setTurn] = useState(0)
+    const [gameboard, setGameboard] = useState(props.generatedBoard)
 
     return (
         <div className="board container">

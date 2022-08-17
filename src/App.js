@@ -10,9 +10,10 @@ function App() {
 
   useEffect(() => {
     if (gameState.turn % 2 === 1) {
-      console.log('CPU turn! Pew pew!')
+      console.log('CPU turn! Pew pew! Turn = ' + gameState.turn)
       advanceTurn()
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [gameState.turn])
 
   function finishPlacement() {
