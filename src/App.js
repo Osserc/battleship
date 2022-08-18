@@ -4,7 +4,7 @@ import { PlacementBoard } from './components/PlacementBoard.js'
 import { PlayerBoard } from './components/PlayerBoard.js'
 import { ComputerBoard } from './components/ComputerBoard.js'
 import { Game } from './game-logic/Game.js'
-import { createGameboard } from './game-logic/Gameboard.js'
+// import { createGameboard } from './game-logic/Gameboard.js'
 
 function App() {
   const [gameState, setGameState] = useState(Game.gameState)
@@ -16,6 +16,10 @@ function App() {
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [gameState.turn])
+
+  useEffect(() => {
+    console.log(gameState.end)
+  }, [gameState.end])
 
   function finishPlacement() {
     setGameState({
@@ -31,9 +35,22 @@ function App() {
                   })
   }
 
+  function resolveTurn() {
+    let newTurn = gameState.turn
+    let newEnd = Game.endgame()
+    if (newEnd === false) {
+      newTurn += 1
+    }
+    setGameState({
+      ...gameState,
+      turn: newTurn,
+      end: newEnd
+    })
+  }
+
   function shoot(event) {
     Game.boardTwo.receiveHit(+event.target.dataset.index)
-    advanceTurn()
+    resolveTurn()
   }
 
   return (
