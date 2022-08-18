@@ -4,6 +4,7 @@ import { PlacementBoard } from './components/PlacementBoard.js'
 import { PlayerBoard } from './components/PlayerBoard.js'
 import { ComputerBoard } from './components/ComputerBoard.js'
 import { Game } from './game-logic/Game.js'
+import { createGameboard } from './game-logic/Gameboard.js'
 
 function App() {
   const [gameState, setGameState] = useState(Game.gameState)
@@ -30,6 +31,11 @@ function App() {
                   })
   }
 
+  function shoot(event) {
+    Game.boardTwo.receiveHit(+event.target.dataset.index)
+    advanceTurn()
+  }
+
   return (
     <div className="App">
       { gameState.placement === true ? 
@@ -40,7 +46,7 @@ function App() {
         <div className="flex justify-center align-center gap-15">
           <PlayerBoard gameboard={Game.boardOne} />
           {gameState.turn}
-          <ComputerBoard gameboard={Game.boardTwo} advanceTurn={advanceTurn} />
+          <ComputerBoard gameboard={Game.boardTwo} shoot={shoot} />
         </div>
       }
     </div>

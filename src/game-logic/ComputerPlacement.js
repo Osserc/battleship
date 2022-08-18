@@ -2,7 +2,6 @@ const ComputerPlacement = (() => {
     let ships = [5, 4, 3, 2, 2]
 
     function randomPlacement(board) {
-        console.log('hi')
         let allowed = false
         for (let i = 0; i < ships.length; i++) {
             while (allowed === false) {
