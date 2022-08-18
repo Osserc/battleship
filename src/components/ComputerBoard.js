@@ -1,12 +1,12 @@
 import { useState } from 'react'
 
 function ComputerBoard(props) {
-    const [gameboard, setGameboard] = useState(props.generatedBoard)
+    const [gameboard, setGameboard] = useState(props.gameboard)
 
     return (
         <div className="board container">
             {gameboard.board.map((cell, index) => {
-                return <div key={index} className="single-cell flex justify-center align-center">d</div>
+                return <div key={index} className="single-cell flex justify-center align-center">{String(cell)}</div>
             })}
         </div>
     )

@@ -34,13 +34,13 @@ function App() {
     <div className="App">
       { gameState.placement === true ? 
         <div className="flex justify-center align-center gap-15">
-          <PlacementBoard generatedBoard={Game.boardOne} finishPlacement={finishPlacement} />
+          <PlacementBoard gameboard={Game.boardOne} finishPlacement={finishPlacement} />
         </div>
         :
         <div className="flex justify-center align-center gap-15">
-          <PlayerBoard generatedBoard={Game.boardOne} advanceTurn={advanceTurn} />
+          <PlayerBoard gameboard={Game.boardOne} advanceTurn={advanceTurn} />
           {gameState.turn}
-          <ComputerBoard generatedBoard={Game.boardTwo} />
+          <ComputerBoard gameboard={Game.boardTwo} />
         </div>
       }
     </div>

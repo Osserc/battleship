@@ -4,6 +4,10 @@
   display: flex;
 }
 
+.flex-c {
+  flex-direction: column;
+}
+
 .justify-center {
   justify-content: center;
 }

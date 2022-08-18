@@ -117,3 +117,58 @@ describe('test hit functionality', () => {
         expect(gameboard.receiveHit(65)).toBe(false)
     })
 })
+
+describe('prevent placing ship out of bounds', () => {
+    beforeEach(() => {
+        gameboard = createGameboard()
+        gameboard.placeShip(3, 4)
+        gameboard.changeOrientation()
+        gameboard.placeShip(2, 35)
+        gameboard.placeShip(5, 93)
+    })
+
+    test('avoid lower bound overflow', () => {
+        gameboard.changeOrientation()
+        expect(gameboard.placeShip(3, 87)).toBe(false)
+        expect(gameboard.placeShip(5, 66)).toBe(false)
+    })
+
+    test('allow lower border positioning', () => {
+        gameboard.changeOrientation()
+        gameboard.placeShip(2, 89)
+        expect(gameboard.board[89]).toHaveProperty('coordinates', [89, 99])
+        expect(gameboard.board[99]).toHaveProperty('coordinates', [89, 99])
+    })
+
+    test('avoid outer bound overflow', () => {
+        expect(gameboard.placeShip(3, 8)).toBe(false)
+        expect(gameboard.placeShip(2, 29)).toBe(false)
+    })
+
+    test('allow outer border positioning', () => {
+        gameboard.placeShip(3, 87)
+        expect(gameboard.board[87]).toHaveProperty('coordinates', [87, 88, 89])
+        expect(gameboard.board[88]).toHaveProperty('coordinates', [87, 88, 89])
+        expect(gameboard.board[89]).toHaveProperty('coordinates', [87, 88, 89])
+    })
+})
+
+describe('prevent placing ship over another ship', () => {
+    beforeEach(() => {
+        gameboard = createGameboard()
+        gameboard.placeShip(3, 4)
+        gameboard.changeOrientation()
+        gameboard.placeShip(2, 35)
+        gameboard.placeShip(5, 93)
+    })
+
+    test('avoid overlap', () => {
+        expect(gameboard.placeShip(3, 3)).toBe(false)
+    })
+
+    test('allow placement', () => {
+        gameboard.changeOrientation()
+        gameboard.placeShip(2, 0)
+        expect(gameboard.board[0]).toHaveProperty('coordinates', [0, 10])
+    })
+})

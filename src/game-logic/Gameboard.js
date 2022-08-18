@@ -2,6 +2,8 @@ import { createShip } from './Ship.js'
 
 function createGameboard() {
     let board = new Array(100).fill(null)
+    const lowerBorder = [90, 91, 92, 93, 94, 95, 96, 97, 98, 99]
+    const rightBorder = [9, 19, 29, 39, 49, 59, 69, 79, 89, 99]
     let vertical = true
     let ships = []
     let shots = {
@@ -15,6 +17,7 @@ function createGameboard() {
 
     function placeShip(length, spot) {
         let coordinates = calculateCoordinates(length, spot)
+        if (validatePlacement(coordinates) === false) return false
         let newShip = createShip(length, coordinates)
         coordinates.forEach(spot => {
             gameboard.board[spot] = newShip
@@ -37,6 +40,33 @@ function createGameboard() {
         }
 
         return coordinates
+    }
+
+    function validatePlacement(coordinates) {
+        if (gameboard.vertical === true) {
+            if ((lowerBound(coordinates) === true) && (detectOverlap(coordinates) === true)) return true
+        } else {
+            if ((outerBound(coordinates)) === true && (detectOverlap(coordinates) === true)) return true
+        }
+        return false
+    }
+
+    function lowerBound(coordinates) {
+        let column = coordinates[0] % 10
+        if (coordinates.some((spot) => spot > lowerBorder[column])) return false
+        return true
+    }
+
+    function outerBound(coordinates) {
+        let row = rightBorder.findIndex((spot) => spot >= coordinates[0])
+        if (coordinates.some((spot) => spot > rightBorder[row]) === true) return false
+        return true
+    }
+
+    function detectOverlap(coordinates) {
+        let occupiedSpots = gameboard.ships.map((ship) => ship.coordinates).flat()
+        if (coordinates.some((spot) => occupiedSpots.includes(spot))) return false
+        return true
     }
 
     function receiveHit(spot) {
@@ -63,7 +93,11 @@ function createGameboard() {
         // calculateCoordinates,
         placeShip,
         receiveHit,
-        allSunk
+        allSunk,
+        lowerBound,
+        outerBound,
+        detectOverlap,
+        validatePlacement
     }
 
     return gameboard
