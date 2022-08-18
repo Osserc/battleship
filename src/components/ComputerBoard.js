@@ -13,7 +13,7 @@ function ComputerBoard(props) {
     return (
         <div className="board container">
             {props.gameboard.board.map((cell, index) => {
-                return <div key={index} className={"single-cell flex justify-center align-center " + (detectMiss(index) ? "miss" : "") + (detectHit(index) ? "hit" : "")} data-index={index} onClick={props.shoot}>{String(cell)}</div>
+                return <div key={index} className={"single-cell flex justify-center align-center " + (detectMiss(index) ? "miss" : "") + (detectHit(index) ? "hit" : "")} data-index={index} onClick={props.end === false ? props.shoot : undefined}>{String(cell)}</div>
             })}
         </div>
     )

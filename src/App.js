@@ -17,10 +17,6 @@ function App() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [gameState.turn])
 
-  useEffect(() => {
-    console.log(gameState.end)
-  }, [gameState.end])
-
   function finishPlacement() {
     setGameState({
                     ...gameState,
@@ -68,7 +64,7 @@ function App() {
         <div className="flex justify-center align-center gap-15">
           <PlayerBoard gameboard={Game.boardOne} />
           {gameState.turn}
-          <ComputerBoard gameboard={Game.boardTwo} shoot={shoot} />
+          <ComputerBoard gameboard={Game.boardTwo} end={gameState.end} shoot={shoot} />
         </div>
       }
     </div>
