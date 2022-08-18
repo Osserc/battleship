@@ -49,8 +49,13 @@ function App() {
   }
 
   function shoot(event) {
-    Game.boardTwo.receiveHit(+event.target.dataset.index)
-    resolveTurn()
+    let shot = Game.boardTwo.receiveHit(+event.target.dataset.index)
+    if (shot === false) {
+      console.log('Invalid!')
+    } else {
+      resolveTurn()
+    }
+    
   }
 
   return (
