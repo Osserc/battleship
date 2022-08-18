@@ -91,14 +91,9 @@ function createGameboard() {
         ships,
         shots,
         changeOrientation,
-        // calculateCoordinates,
         placeShip,
         receiveHit,
         allSunk,
-        lowerBound,
-        outerBound,
-        detectOverlap,
-        validatePlacement
     }
 
     return gameboard

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { createGameboard } from '../game-logic/Gameboard.js'
+// import { createGameboard } from '../game-logic/Gameboard.js'
 
 function PlacementBoard(props) {
     // const [gameboard, setgameboard] = useState(props.generatedBoard)
@@ -39,8 +39,6 @@ function PlacementBoard(props) {
         if (status === true) {
             setShips(ships.filter((element, index) => index !== 0))
         }
-        console.log(props.gameboard.board)
-        console.log(ships.length)
     }
 
     return (
