@@ -35,8 +35,10 @@ function PlacementBoard(props) {
     }, [ships]);
 
     function selectSpot(event) {
-        props.gameboard.placeShip(currentShip.length, +event.target.dataset.id)
-        setShips(ships.filter((element, index) => index !== 0))
+        let status = props.gameboard.placeShip(currentShip.length, +event.target.dataset.id)
+        if (status === true) {
+            setShips(ships.filter((element, index) => index !== 0))
+        }
         console.log(props.gameboard.board)
         console.log(ships.length)
     }

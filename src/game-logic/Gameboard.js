@@ -23,6 +23,7 @@ function createGameboard() {
             gameboard.board[spot] = newShip
         })
         gameboard.ships.push(newShip)
+        return true
     }
 
     function calculateCoordinates(length, spot) {

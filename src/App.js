@@ -38,9 +38,9 @@ function App() {
         </div>
         :
         <div className="flex justify-center align-center gap-15">
-          <PlayerBoard gameboard={Game.boardOne} advanceTurn={advanceTurn} />
+          <PlayerBoard gameboard={Game.boardOne} />
           {gameState.turn}
-          <ComputerBoard gameboard={Game.boardTwo} />
+          <ComputerBoard gameboard={Game.boardTwo} advanceTurn={advanceTurn} />
         </div>
       }
     </div>
