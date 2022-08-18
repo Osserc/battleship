@@ -6,7 +6,7 @@ const ComputerPlacement = (() => {
         let allowed = false
         for (let i = 0; i < ships.length; i++) {
             while (allowed === false) {
-                decideDirection()
+                decideDirection(board)
                 let spot = decideSpot()
                 allowed = board.placeShip(ships[i], spot)
             }
