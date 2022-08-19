@@ -4,15 +4,15 @@ import { PlacementBoard } from './components/PlacementBoard.js'
 import { PlayerBoard } from './components/PlayerBoard.js'
 import { ComputerBoard } from './components/ComputerBoard.js'
 import { Game } from './game-logic/Game.js'
-// import { createGameboard } from './game-logic/Gameboard.js'
+import { ComputerShot } from './game-logic/ComputerShot.js'
 
 function App() {
   const [gameState, setGameState] = useState(Game.gameState)
 
   useEffect(() => {
     if (gameState.turn % 2 === 1) {
-      console.log('CPU turn! Pew pew! Turn = ' + gameState.turn)
-      advanceTurn()
+      ComputerShot.shoot(Game.boardOne)
+      resolveTurn()
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [gameState.turn])

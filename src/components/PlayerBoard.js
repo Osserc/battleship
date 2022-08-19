@@ -1,13 +1,17 @@
-import { useState } from 'react'
-import { Game } from '../game-logic/Game.js'
-
 function PlayerBoard(props) {
-    const [gameboard, setgameboard] = useState(props.gameboard)
+
+    function detectMiss(index) {
+        return props.gameboard.shots.misses.includes(index)
+    }
+
+    function detectHit(index) {
+        return props.gameboard.shots.hits.includes(index)
+    }
 
     return (
         <div className="board container">
-            {gameboard.board.map((cell, index) => {
-                return <div key={index} className="single-cell flex justify-center align-center">{String(cell)}</div>
+            {props.gameboard.board.map((cell, index) => {
+                return <div key={index} className={"single-cell flex justify-center align-center " + (detectMiss(index) ? "miss" : "") + (detectHit(index) ? "hit" : "")} data-index={index} >{String(cell)}</div>
             })}
         </div>
     )

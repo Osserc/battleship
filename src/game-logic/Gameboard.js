@@ -78,6 +78,7 @@ function createGameboard() {
         } else {
             gameboard.shots.misses.push(spot)
         }
+        return true
     }
 
     function allSunk() {
