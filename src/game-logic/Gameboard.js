@@ -86,6 +86,16 @@ function createGameboard() {
         return false
     }
 
+    function reset() {
+        gameboard.board = new Array(100).fill(null)
+        gameboard.vertical = true
+        gameboard.ships = []
+        gameboard.shots = {
+                    hits: [],
+                    misses: []
+                }
+    }
+
     const gameboard = {
         board,
         vertical,
@@ -95,6 +105,7 @@ function createGameboard() {
         placeShip,
         receiveHit,
         allSunk,
+        reset
     }
 
     return gameboard

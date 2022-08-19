@@ -18,13 +18,20 @@ const Game = (() => {
         return false
     }
 
+    function reset() {
+        this.boardOne.reset()
+        this.boardTwo.reset()
+        ComputerPlacement.randomPlacement(this.boardTwo)
+    }
+
     ComputerPlacement.randomPlacement(boardTwo)
 
     return {
         boardOne,
         boardTwo,
         gameState,
-        endgame
+        endgame,
+        reset
     }
 })()
 

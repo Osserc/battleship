@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react'
-// import { createGameboard } from '../game-logic/Gameboard.js'
 
 function PlacementBoard(props) {
-    // const [gameboard, setgameboard] = useState(props.generatedBoard)
     const [ships, setShips] = useState([{
                                             id: 0,
                                             length: 5
