@@ -45,7 +45,7 @@ function App() {
   function shoot(event) {
     let shot = Game.boardTwo.receiveHit(+event.target.dataset.index)
     if (shot === false) {
-      console.log('Invalid!')
+      return
     } else {
       resolveTurn()
     }
@@ -75,7 +75,7 @@ function App() {
       }
 
       { gameState.end === true ? 
-        <GameOver turn={gameState.end} reset={resetGame} />
+        <GameOver turn={gameState.turn} reset={resetGame} />
         :
         null
       }
