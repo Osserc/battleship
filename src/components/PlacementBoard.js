@@ -68,6 +68,7 @@ function PlacementBoard(props) {
         for (let i = 1; i < currentShip.length; i++) {
             cellsIndexes.push(cellsIndexes[cellsIndexes.length - 1] + orientation)
         }
+        cellsIndexes = pruneCells(cellsIndexes, orientation)
         return cellsIndexes
     }
 
@@ -89,6 +90,16 @@ function PlacementBoard(props) {
         cells.forEach((cell) => {
             cell.classList.remove('selected')
         })
+    }
+
+    function pruneCells(cells, orientation) {
+        console.log('d')
+        let border = 100
+        if (orientation === 1) {
+            border = Math.ceil(cells[0] / 10) * 10
+        }
+        let prunedCells = cells.filter((cell) => cell < border)
+        return prunedCells
     }
 
     return (
