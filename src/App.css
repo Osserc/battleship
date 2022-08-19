@@ -41,3 +41,7 @@
 .hit {
   background-color: red;
 }
+
+.selected {
+  background-color: yellow;
+}

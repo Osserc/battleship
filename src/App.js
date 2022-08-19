@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { PlacementBoard } from './components/PlacementBoard.js'
 import { PlayerBoard } from './components/PlayerBoard.js'
 import { ComputerBoard } from './components/ComputerBoard.js'
+import { Header } from './components/Header.js'
 import { Game } from './game-logic/Game.js'
 import { ComputerShot } from './game-logic/ComputerShot.js'
 import { GameOver } from './components/GameOver.js'
@@ -62,6 +63,7 @@ function App() {
 
   return (
     <div className="App">
+      <Header />
       { gameState.placement === true ? 
         <div className="flex justify-center align-center gap-15">
           <PlacementBoard gameboard={Game.boardOne} finishPlacement={finishPlacement} />
@@ -69,7 +71,6 @@ function App() {
         :
         <div className="flex justify-center align-center gap-15">
           <PlayerBoard gameboard={Game.boardOne} />
-          {gameState.turn}
           <ComputerBoard gameboard={Game.boardTwo} end={gameState.end} shoot={shoot} />
         </div>
       }

@@ -12,7 +12,6 @@ const Game = (() => {
 
     function endgame() {
         if ((boardOne.allSunk() === true) || (boardTwo.allSunk() === true)) {
-            console.log('Game over')
             return true
         }
         return false
