@@ -1,6 +1,6 @@
 function GameOver(props) {
     return (
-        <div>
+        <div className="flex flex-c justify-center align-center gap-15">
             <div>
                 {props.turn % 2 === 0 ?
                 "You won!"

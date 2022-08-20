@@ -110,7 +110,7 @@ function PlacementBoard(props) {
                 <button onClick={props.gameboard.changeOrientation}>Rotate ship</button>
                 <div className="flex flex-c justify-start gap-15">
                     {ships.map((ship) => {
-                        return <ShipIcon key={ship.id} whole={ship.length} damaged={0} />
+                        return <ShipIcon key={ship.id} length={ship.length} />
                     })}
                 </div>
             </div>

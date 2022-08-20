@@ -62,8 +62,13 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className="App flex flex-c gap-15">
       <Header />
+      { gameState.end === true ? 
+        <GameOver turn={gameState.turn} reset={resetGame} />
+        :
+        null
+      }
       { gameState.placement === true ? 
         <div className="flex justify-center align-center gap-15">
           <PlacementBoard gameboard={Game.boardOne} finishPlacement={finishPlacement} />
@@ -73,12 +78,6 @@ function App() {
           <PlayerBoard gameboard={Game.boardOne} />
           <ComputerBoard gameboard={Game.boardTwo} end={gameState.end} shoot={shoot} />
         </div>
-      }
-
-      { gameState.end === true ? 
-        <GameOver turn={gameState.turn} reset={resetGame} />
-        :
-        null
       }
     </div>
   )
