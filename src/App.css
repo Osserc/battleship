@@ -91,18 +91,6 @@ button {
   height: 100%;
 }
 
-.miss {
-  background-color: green;
-}
-
-.hit {
-  background-color: red;
-}
-
-.selected {
-  background-color: yellow;
-}
-
 .ship-piece {
   width: 15px;
   height: 15px;
@@ -116,12 +104,24 @@ button {
   background-color: red;
 }
 
-.sunk {
-  background-color: grey;
+.miss {
+  background-color: green;
+}
+
+.selected {
+  background-color: yellow;
 }
 
 .ship {
   background-color: whitesmoke;
+}
+
+.hit {
+  background-color: red;
+}
+
+.sunk {
+  background-color: grey;
 }
 
 @media (max-width: 900px) {
