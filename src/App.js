@@ -70,7 +70,7 @@ function App() {
         null
       }
       { gameState.placement === true ? 
-        <div className="PBoard b-box flex justify-center align-center gap-15 m-15">
+        <div className="b-box flex justify-center align-center gap-15 m-15">
           <PlacementBoard gameboard={Game.boardOne} finishPlacement={finishPlacement} />
         </div>
         :

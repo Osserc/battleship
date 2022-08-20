@@ -51,10 +51,9 @@ body {
 
 html, body, #root {
   height: 100%;
-  min-height: 100%;
 }
 
-#root {
+html {
   background-color: darkcyan;
 }
 
@@ -121,12 +120,21 @@ button {
   background-color: grey;
 }
 
-@media (max-width: 720px) {
+.ship {
+  background-color: whitesmoke;
+}
+
+@media (max-width: 900px) {
   .PBoard {
-    flex-direction: column;
+    flex-direction: column-reverse;
   }
   
   .TwoBoards {
     flex-direction: column;
+  }
+
+  html, body, #root {
+    height: unset;
+    min-height: 100%;
   }
 }

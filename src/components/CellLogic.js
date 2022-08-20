@@ -1,4 +1,8 @@
 const CellLogic = (() => {
+    function detectShip(cell) {
+        if (cell != null) return true
+    }
+
     function detectSunk(cell) {
         if (cell != null) return cell.isSunk()
     }
@@ -12,6 +16,7 @@ const CellLogic = (() => {
     }
 
     return {
+            detectShip,
             detectSunk,
             detectMiss,
             detectHit

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { ShipIcon } from './ShipIcon.js'
+import { CellLogic } from './CellLogic.js'
 
 function PlacementBoard(props) {
     const [ships, setShips] = useState([{
@@ -105,7 +106,7 @@ function PlacementBoard(props) {
     }
 
     return (
-        <div className="flex justify-center align-center gap-15">
+        <div className="PBoard flex justify-center align-center gap-15">
             <div className="flex flex-c justify-center align-center gap-15">
                 <button onClick={props.gameboard.changeOrientation}>Rotate ship</button>
                 <div className="flex flex-c justify-start gap-15">
@@ -116,7 +117,7 @@ function PlacementBoard(props) {
             </div>
             <div className="board container">
                 {props.gameboard.board.map((cell, index) => {
-                    return <div key={index} className="single-cell flex justify-center align-center" data-id={index} onClick={selectSpot} onMouseEnter={colorCells} onMouseLeave={decolorCells}></div>
+                    return <div key={index} className={(CellLogic.detectShip(cell) ? "ship " : "") + "single-cell flex justify-center align-center"} data-id={index} onClick={selectSpot} onMouseEnter={colorCells} onMouseLeave={decolorCells}></div>
                 })}
             </div>
         </div>
