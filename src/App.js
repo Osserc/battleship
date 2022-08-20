@@ -70,11 +70,11 @@ function App() {
         null
       }
       { gameState.placement === true ? 
-        <div className="flex justify-center align-center gap-15">
+        <div className="PBoard b-box flex justify-center align-center gap-15 m-15">
           <PlacementBoard gameboard={Game.boardOne} finishPlacement={finishPlacement} />
         </div>
         :
-        <div className="flex justify-center align-center gap-15">
+        <div className="TwoBoards b-box flex justify-center align-center gap-15 m-15">
           <PlayerBoard gameboard={Game.boardOne} />
           <ComputerBoard gameboard={Game.boardTwo} end={gameState.end} shoot={shoot} />
         </div>

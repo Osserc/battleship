@@ -28,11 +28,61 @@
   gap: 5px;
 }
 
+.p-15 {
+  padding: 15px;
+}
+
+.b-box {
+  box-sizing: border-box;
+}
+
+.m-15 {
+  margin: 15px;
+}
+
+.text-center {
+  text-align: center;
+}
+
 /* CSS proper */
+body {
+  margin: 0;
+}
+
+html, body, #root {
+  height: 100%;
+  min-height: 100%;
+}
+
+#root {
+  background-color: darkcyan;
+}
+
+header {
+  font-size: 56px;
+  background-color: navy;
+  color: gray;
+  font-weight: bold;
+}
+
+.GameOver {
+  font-size: 32px;
+}
+
+button {
+  font-size: 24px;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+}
+
 .board {
   display: grid;
-  grid-template-columns: repeat(10, 50px);
-  grid-template-rows: repeat(10, 50px);
+  grid-template-columns: repeat(10, minmax(25px, 50px));
+}
+
+.board div {
+  aspect-ratio: 1;
 }
 
 .single-cell {
@@ -54,10 +104,6 @@
   background-color: yellow;
 }
 
-.ship-preview {
-
-}
-
 .ship-piece {
   width: 15px;
   height: 15px;
@@ -73,4 +119,14 @@
 
 .sunk {
   background-color: grey;
+}
+
+@media (max-width: 720px) {
+  .PBoard {
+    flex-direction: column;
+  }
+  
+  .TwoBoards {
+    flex-direction: column;
+  }
 }

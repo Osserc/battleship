@@ -116,7 +116,7 @@ function PlacementBoard(props) {
             </div>
             <div className="board container">
                 {props.gameboard.board.map((cell, index) => {
-                    return <div key={index} className="single-cell flex justify-center align-center" data-id={index} onClick={selectSpot} onMouseEnter={colorCells} onMouseLeave={decolorCells}>{String(cell)}</div>
+                    return <div key={index} className="single-cell flex justify-center align-center" data-id={index} onClick={selectSpot} onMouseEnter={colorCells} onMouseLeave={decolorCells}></div>
                 })}
             </div>
         </div>

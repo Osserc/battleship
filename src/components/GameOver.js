@@ -1,11 +1,11 @@
 function GameOver(props) {
     return (
-        <div className="flex flex-c justify-center align-center gap-15">
+        <div className="GameOver flex flex-c justify-center align-center text-center gap-15 p-15">
             <div>
                 {props.turn % 2 === 0 ?
-                "You won!"
+                "You won, commander!"
                 :
-                "The computer won..."}
+                "We suffered defeat, commander..."}
             </div>
             <div>
                 <button onClick={props.reset}>Play again</button>
