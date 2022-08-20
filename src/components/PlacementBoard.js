@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { act } from 'react-dom/test-utils';
+import { ShipIcon } from './ShipIcon.js'
 
 function PlacementBoard(props) {
     const [ships, setShips] = useState([{
@@ -37,8 +37,8 @@ function PlacementBoard(props) {
         let status = props.gameboard.placeShip(currentShip.length, +event.target.dataset.id)
         if (status === true) {
             setShips(ships.filter((element, index) => index !== 0))
+            decolorCells(event)
         }
-        decolorCells(event)
     }
 
     function colorCells(event) {
@@ -93,22 +93,26 @@ function PlacementBoard(props) {
     }
 
     function pruneCells(cells, orientation) {
-        console.log('d')
         let border = 100
         if (orientation === 1) {
             border = Math.ceil(cells[0] / 10) * 10
+            if (cells[0].toString().slice(-1) === "0") {
+                border += 10
+            }
         }
         let prunedCells = cells.filter((cell) => cell < border)
         return prunedCells
     }
 
     return (
-        <div className="flex justify-center align-center">
-            <div className="flex flex-c justify-center align-center">
+        <div className="flex justify-center align-center gap-15">
+            <div className="flex flex-c justify-center align-center gap-15">
                 <button onClick={props.gameboard.changeOrientation}>Rotate ship</button>
-                {ships.map((ship) => {
-                    return <div key={ship.id}>{ship.length}</div>
-                })}
+                <div className="flex flex-c justify-start gap-15">
+                    {ships.map((ship) => {
+                        return <ShipIcon key={ship.id} whole={ship.length} damaged={0} />
+                    })}
+                </div>
             </div>
             <div className="board container">
                 {props.gameboard.board.map((cell, index) => {

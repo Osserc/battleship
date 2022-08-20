@@ -108,7 +108,6 @@ describe('test hit functionality', () => {
 
     test('record successful hit', () => {
         gameboard.receiveHit(4)
-        console.log(gameboard.board[4])
         expect(gameboard.shots.hits).toContain(4)
     })
 

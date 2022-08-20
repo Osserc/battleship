@@ -12,12 +12,20 @@
   justify-content: center;
 }
 
+.justify-start {
+  justify-content: flex-start;
+}
+
 .align-center {
   align-items: center;
 }
 
 .gap-15 {
   gap: 15px;
+}
+
+.gap-5 {
+  gap: 5px;
 }
 
 /* CSS proper */
@@ -44,4 +52,21 @@
 
 .selected {
   background-color: yellow;
+}
+
+.ship-preview {
+
+}
+
+.ship-piece {
+  width: 15px;
+  height: 15px;
+}
+
+.whole {
+  background-color: green;
+}
+
+.damaged {
+  background-color: red;
 }

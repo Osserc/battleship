@@ -20,6 +20,7 @@ function createShip(length, coordinates) {
     return {
         coordinates,
         hit,
+        hits,
         isSunk
     }
 
