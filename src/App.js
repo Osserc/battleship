@@ -7,6 +7,7 @@ import { Header } from './components/Header.js'
 import { Game } from './game-logic/Game.js'
 import { ComputerShot } from './game-logic/ComputerShot.js'
 import { GameOver } from './components/GameOver.js'
+import { AudioFiles } from './components/AudioFiles.js'
 
 function App() {
   // const [gameState, setGameState] = useState(Game.gameState)
@@ -48,6 +49,7 @@ function App() {
     if (shot === false) {
       return
     } else {
+      AudioFiles.playSunk()
       resolveTurn()
     }
   }
@@ -62,7 +64,7 @@ function App() {
   }
 
   return (
-    <div className="App flex flex-c gap-15">
+    <div className="App flex flex-c justify-center align-center gap-15">
       <Header />
       { gameState.end === true ? 
         <GameOver turn={gameState.turn} reset={resetGame} />

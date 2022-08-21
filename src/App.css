@@ -60,19 +60,49 @@ html {
 header {
   font-size: 56px;
   background-color: navy;
-  color: gray;
+  color: whitesmoke;
   font-weight: bold;
+  box-shadow: 5px 0px 2px 3px gray;
+  width: 100%;
 }
 
 .GameOver {
   font-size: 32px;
+  background-color: navy;
+  box-shadow: 2px 2px 5px 2px gray;
+  color: whitesmoke;
+  animation: spring-up 5s;
+  width: fit-content;
+  height: fit-content;
+}
+
+@keyframes spring-up {
+  0% {
+    transform: scale(0);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.Placement {
+  background-color: navy;
+  box-shadow: 2px 2px 5px 2px gray;
 }
 
 button {
   font-size: 24px;
   border: none;
+  background-color: darkcyan;
+  color: whitesmoke;
   padding: 5px;
   cursor: pointer;
+  transition: 0.5s;
+}
+
+button:hover {
+  box-shadow: 3px 3px 3px whitesmoke;
 }
 
 .board {
