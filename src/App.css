@@ -104,12 +104,12 @@ button {
   background-color: red;
 }
 
-.miss {
-  background-color: green;
-}
-
 .selected {
   background-color: yellow;
+}
+
+.miss {
+  background-color: green;
 }
 
 .ship {

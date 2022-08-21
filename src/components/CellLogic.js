@@ -15,11 +15,21 @@ const CellLogic = (() => {
         return shots.hits.includes(index)
     }
 
+    function selectCell(event) {
+        event.target.classList.add('selected')
+    }
+
+    function deselectCell(event) {
+        event.target.classList.remove('selected')
+    }
+
     return {
             detectShip,
             detectSunk,
             detectMiss,
-            detectHit
+            detectHit,
+            selectCell,
+            deselectCell
             }
 })()
 
